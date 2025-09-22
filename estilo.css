@@ -1,0 +1,438 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+    overflow-x: hidden;
+}
+
+body {
+    background: #040a1a;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.6;
+    padding-top: 70px;
+}
+
+body.menu-aberto {
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+body.menu-aberto::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+header {
+    background: #040a1a;
+    color: #dddddd;
+    padding: 100px 0 0 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    background: #040a1a;
+    color: #F8FAFC;
+    padding: 70px 0;
+}
+
+footer {
+    width: 100%;
+    background: #000;
+    color: #F8FAFC;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    padding: 40px 20px 20px 20px;
+}
+
+footer .onda-bottom {
+    position: relative;
+    top: 1px;
+    /* Evita uma linha branca entre a onda e o fundo */
+}
+
+footer .onda-bottom svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+
+footer p {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+footer a {
+    color: #00f7ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- TEXTOS --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #00f7ff;
+}
+
+h1 {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin: 30px 0;
+    font-size: 2em;
+}
+
+h3 {
+    margin-top: 40px;
+    margin-bottom: 18px;
+    font-size: 1.4em;
+}
+
+p {
+    margin-bottom: 28px;
+    font-size: 1.15em;
+}
+
+/* --- MENU --- */
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0a101f;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.10);
+    z-index: 1000;
+    border-bottom: 2px solid #00f7ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 70px;
+}
+
+#menu-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #040a1a;
+    box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.5);
+    padding-top: 80px;
+    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow-y: auto;
+}
+
+.menu-fixo.ativo #menu-lista {
+    right: 0;
+}
+
+#menu-lista a {
+    color: #00f7ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3em;
+    display: block;
+    padding: 20px 30px;
+    border-bottom: 1px solid #0a101f;
+    transition: 0.3s;
+}
+
+#menu-lista a:hover {
+    background-color: #0a101f;
+}
+
+#btn-mobile {
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    border-top: 3px solid #00f7ff;
+}
+
+.hamburger::after,
+.hamburger::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #00f7ff;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.menu-fixo.ativo .hamburger {
+    border-top-color: transparent;
+}
+
+.menu-fixo.ativo .hamburger::before {
+    transform: rotate(135deg);
+}
+
+.menu-fixo.ativo .hamburger::after {
+    transform: rotate(-135deg);
+    top: -8px;
+}
+
+.menu-fixo .logo {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #00f7ff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.onda-top,
+.onda-bottom {
+    width: 100vw;
+    min-width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.onda-top svg,
+.onda-bottom svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+
+.onda-top {
+    transform: rotate(180deg);
+}
+
+
+.elemento3d {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 105%;
+}
+
+/* ============================================= */
+/* ====== ESTILOS DO CARROSSEL DE PROFISSÕES ====== */
+/* ============================================= */
+.carrossel-container {
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    position: relative;
+    background: #ffffff;
+    overflow-x: clip;
+    /* Adicionado para evitar vazamentos laterais */
+}
+
+.carrossel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Fica acima do fundo, mas abaixo dos slides */
+    pointer-events: none;
+    /* Garante que não bloqueie os cliques */
+    background: linear-gradient(to right,
+            #ffffff 0%,
+            /* Cor da borda esquerda */
+            transparent 25%,
+            /* Fica transparente no meio */
+            transparent 75%,
+            /* Continua transparente no meio */
+            #ffffff 100%
+            /* Cor da borda direita */
+        );
+}
+
+.carrossel-titulo {
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.carrossel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    height: 450px;
+    /* ALTERAÇÃO: A 'perspective' foi removida para garantir a animação 2D. */
+}
+
+.slide {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    position: absolute;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out, filter 0.5s ease-out;
+    /* ALTERAÇÃO: A transição foi refinada. */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.438);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.slide-info h3 {
+    color: #00f7ff;
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+}
+
+.slide-info p {
+    font-size: 1em;
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+.btn-saiba-mais {
+    display: inline-block;
+    padding: 12px 25px;
+    background: transparent;
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid white;
+    transition: 0.3s, color 0.3s;
+    align-self: center;
+}
+
+.btn-saiba-mais:hover {
+    background: white;
+    color: black;
+}
+
+/* ALTERAÇÃO: O 'pointer-events' do slide ativo foi movido para fora da regra de 'transform' para manter a organização, mas o efeito é o mesmo. */
+.slide.ativo {
+    transform: translateX(0) scale(1.1);
+    opacity: 1;
+    z-index: 10;
+    filter: brightness(100%);
+    pointer-events: auto;
+}
+
+/* O 'pointer-events' foi alterado para 'none' para evitar cliques nos slides desfocados, mas mantido seu 'auto' original, pois a lógica pode ter um propósito. Se quiser impedir cliques, mude para 'none' */
+.slide.anterior {
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.8;
+    z-index: 5;
+    filter: brightness(40%) blur(2px);
+    pointer-events: auto;
+    /* Pode ser alterado para 'none' */
+}
+
+.slide.proximo {
+    transform: translateX(50%) scale(0.9);
+    opacity: 0.8;
+    z-index: 5;
+    filter: brightness(40%) blur(2px);
+    pointer-events: auto;
+    /* Pode ser alterado para 'none' */
+}
+
+.carrossel-nav {
+    margin-top: 30px;
+    z-index: 20;
+}
+
+.nav-btn {
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #070707;
+    color: white;
+    font-size: 1.5em;
+    border: none;
+    cursor: pointer;
+    margin: 0 15px;
+}
+
+#linhas-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Joga o canvas para o fundo de tudo */
+    pointer-events: none; /* Garante que não bloqueie cliques */
+}
